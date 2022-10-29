@@ -17,24 +17,38 @@ function newElement() {
   span.className = "close";
   span.appendChild(i);
   li.appendChild(span);
-    
-  
+      
     for (i = 0; i < close.length; i++) {
       close[i].onclick = function() {
         var div = this.parentElement;
-        div.style.display = "none";
+        div.parentNode.removeChild(div);
       }
     }
   }
+
+  // Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+ 
+for (var a = 0; a < myNodelist.length; a++) {
+  var span = document.createElement("SPAN");
+  var i = document.createElement("I");
+  i.className = "fa fa-trash"
+  span.className = "close";
+  span.appendChild(i);
+  myNodelist[a].appendChild(span);
+}
+
   // Click on a delete button to remove the current list item
-  var close = document.getElementsByClassName("close");
-  var i;
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.removeChild("LI")
-    }
+let close = document.getElementsByClassName("close");
+for (var a = 0; a < close.length; a++) {
+  close[a].onclick = function() {
+   var div = this.parentElement;
+   div.parentNode.removeChild(div); 
+
   }
+}
+
+ 
   // Add a "checked" symbol when clicking on a list item
   var list = document.querySelector('ul');
   list.addEventListener('click', function(ev) {
